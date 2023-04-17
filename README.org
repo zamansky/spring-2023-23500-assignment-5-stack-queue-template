@@ -1,40 +1,55 @@
-* Spring 2023 235 Sorting
+* Project 5 Stacks and Queues
 
-* Due: Friday 4/21 7:00am
+* Due: Tuesday May 2, 7:00am
 
-* Description
+* Folder and files
 
-Start with the class code that implements the selection, merge, and
-quick sorts.
+- This project requires:
+  - A Makefile
+  - Doctest based tests
+  - At least three targets in the Makefile
+    1. main (program executable)
+    2. tests (doctest tests executable)
+    3. clean (remove the .o files) 
 
-Write a new version of quick sort, qsort2. It should have this
-signature ~std::vector<int> qsort2(std::vector<int>, int low, int
-high);~.
-
-It should:
-
-1. Use a reasonable pivot (as opposed to just list[0])
-2. It should perform the sort *in place*, that is it should
-   rearrange the elements in the vector around the pivot as opposed to
-   copying to a new vector. It should then return itself.
-3. When first calling, low should be 0 and high should be the last
-   index in the input vector. In each recursive call, low and high
-   should be modified to index in to the part of the vector you're
-   recursively sorting.
-
-Run some timing tests on data sets of different sizes and
-configurations to compare the merge and quick sorts we wrote together
-in class with your new sort. Also, run the C++ built in sort and
-compare that as well (you'll have to look that one up).
+* Important notes
+1. As indiciated above, you should test your project using doctest
+2. Make sure to use exceptions as we discussed in class to handle error conditions.
 
 
-Edit this file and add comments below indicating what you found when
-you did your timing experiments. 
+* Part 1 - Stacks
 
-* Notes:
+Create a linked list based stack class. You can call the class
+whatever you'd like. Feel free to use code that you developed for
+earlier projects (Node, etc.). *IMPORTANT NOTE:* Your stack class has to implement the list, you can reuse code but 
+you can't just have an instance variable with a list as a member you must create and manipulate the linked list in your stack class.
 
-This assignment does not require doctest testing. It does, however
-require a make file that compiles to an executable named *main*. You
-can create a new Makefile or copy and modify one you've used in the past.
 
-* Write your comments here:   
+You mist implement the following functionality:
+1. Constructor/destructors
+2. push(int) (you can change the type to std::string if you'd like)
+3. int pop() // remove and return the top item
+4. int top() // return but do not remove the top item
+5. bool is_empty() // return true if empty, false otherwise
+
+You must also use exception handling (try/catch) to handle error
+situations like stack empty and full (although you really can't test
+full easily so just implement it but don't worry about testing).
+
+
+* Part 2 - Queues
+
+Create an array (or std::vector) based queue class. You can call the class whatever you like. 
+It should start the array (or std::vector) at some small size and have integer index variables to represent the front and back (head / tail). When you get to the end of the array, you should cycle back to the beginning and when the head wraps around and catches up with the tail, the queue should be considered full. Likewise if the tail catches up with the head the qwueue is empty. Note that the tail also wraps around and taht the queue starts out empty.
+
+
+Your class must implement the following functionality:
+1. Constructor(s)
+2. enqueue(int) (you can change to std::string if you wish) // add an item to the back of the queue
+3. int sequeue() // remove and return the item from the front of the queue
+4. int front() // return but do not remove the item from the front of the queue
+5. bool is_empty()
+6. bool is_full().
+
+You should not grow the array or std::vector once you create it, just let the queue fill up.
+
